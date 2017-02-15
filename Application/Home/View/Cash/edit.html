@@ -1,0 +1,47 @@
+<extend name="Public/base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE FORMPORTLET-->
+        <div class="widget blue">
+            <div class="widget-title">
+                <h4><i class="icon-reorder"></i> 编辑交接单</h4>
+                <span class="tools">
+                <a href="javascript:;" class="icon-chevron-down"></a>
+                </span>
+            </div>
+            <div class="widget-body">
+                <!-- BEGIN FORM-->
+                <div class="row-fluid">
+                    <form action="{:U('cash/edit')}" class="form-horizontal" method="post">
+                        <input type="hidden" name="id" value="{$info.id}"/>
+                        <div class="control-group">
+                            <label class="control-label">支付宝账号</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入支付宝账号" class="input-xxlarge" name="alpaynumber" value="{$info.alpaynumber}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">淘宝账号</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入淘宝账号" class="input-xxlarge" name="tbnumber" value="{$info.tbnumber}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">密码</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请输入金额如:100.00" class="input-xxlarge" name="cashprice" value="{$info.cashprice}">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn blue"><i class="icon-ok"></i> 提交</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+  </div>
+</block>

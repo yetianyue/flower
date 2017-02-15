@@ -1,0 +1,64 @@
+<!-- BEGIN SIDEBAR -->
+      <div class="sidebar-scroll">
+        <div id="sidebar" class="nav-collapse collapse">
+
+         <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+         <div class="navbar-inverse">
+            <form class="navbar-search visible-phone">
+               <input type="text" class="search-query" placeholder="Search" />
+            </form>
+         </div>
+         <!-- END RESPONSIVE QUICK SEARCH FORM -->
+         <!-- BEGIN SIDEBAR MENU -->
+          <ul class="sidebar-menu">
+             <li class="<?php if(strtolower($requestInfo['c'])=='memeber' || strtolower($requestInfo['c'])=='source' || strtolower($requestInfo['c'])=='money'){ echo 'sub-menu active';}else{ echo 'sub-menu';}?>">
+                  <a href="javascript:;" class="">
+                      <i class="icon-dashboard"></i>
+                      <span>系统管理</span>
+                      <span class="arrow"></span>
+                  </a>
+                  <ul class="sub">
+                      <if condition="$userinfo.roleid eq 1">
+                      <li <?php if(strtolower($requestInfo['c'])=='source'){ echo 'class = "active"';}?> ><a class="" href="{:U('source/lists')}">基础信息</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='memeber'&&in_array(strtolower($requestInfo['a']),array('lists','add','edit','del'))){ echo 'class = "active"';}?>><a class="" href="{:U('memeber/lists')}">用户管理</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='memeber'&&strtolower($requestInfo['a'])=='role'){ echo 'class = "active"';}?>><a class="" href="{:U('memeber/role')}">权限管理</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='money'&&strtolower($requestInfo['a'])=='account'){ echo 'class = "active"';}?>><a class="" href="{:U('money/account')}">结算</a></li>
+                      </if>
+                      <li <?php if(strtolower($requestInfo['c'])=='money'&&strtolower($requestInfo['a'])=='lists'){ echo 'class = "active"';}?> ><a class="" href="{:U('money/lists')}">流水</a></li>
+                  </ul>
+              </li>
+              <li class="<?php if(strtolower($requestInfo['c'])=='order'){ echo 'sub-menu active';}else{ echo 'sub-menu';}?>">
+                  <a href="javascript:;" class="">
+                      <i class="icon-tasks"></i>
+                      <span>订单管理</span>
+                      <span class="arrow"></span>
+                  </a>
+                  <ul class="sub">
+                      <li <?php if(strtolower($requestInfo['c'])=='order'&&strtolower($requestInfo['a'])=='add'){ echo 'class = "active"';}?>><a class="" href="{:U('order/add')}">添加订单</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='order'&&strtolower($requestInfo['a'])=='lists'){ echo 'class = "active"';}?>><a class="" href="{:U('order/lists')}">订单列表</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='order'&&strtolower($requestInfo['a'])=='cancel'){ echo 'class = "active"';}?>><a class="" href="{:U('order/cancel')}">作废订单</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='order'&&strtolower($requestInfo['a'])=='templists'){ echo 'class = "active"';}?>><a class="" href="{:U('order/templists')}">临时订单</a></li>
+                  </ul>
+              </li>
+              <li class="<?php if(strtolower($requestInfo['c'])=='jorder' || strtolower($requestInfo['c'])=='cash' ){ echo 'sub-menu active';}else{ echo 'sub-menu';}?>">
+                  <a href="javascript:;" class="">
+                      <i class="icon-bar-chart"></i>
+                      <span>交接管理</span>
+                      <span class="arrow"></span>
+                  </a>
+                  <ul class="sub">
+                      <li <?php if(strtolower($requestInfo['c'])=='jorder'){ echo 'class = "active"';}?>><a class="" href="{:U('jorder/lists')}">交接单</a></li>
+                      <li <?php if(strtolower($requestInfo['c'])=='cash'){ echo 'class = "active"';}?>><a class="" href="{:U('cash/lists')}">返现</a></li>
+                  </ul>
+              </li>
+              <li class="<?php if(strtolower($requestInfo['c'])=='logout'){ echo 'sub-menu active';}else{ echo 'sub-menu';}?>">
+                  <a class="" href="{:U('base/logout')}">
+                    <i class="icon-user"></i>
+                    <span>退出</span>
+                  </a>
+              </li>
+          </ul>
+         <!-- END SIDEBAR MENU -->
+      </div>
+      </div>
+      <!-- END SIDEBAR -->

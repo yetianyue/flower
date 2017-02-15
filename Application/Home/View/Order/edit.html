@@ -1,0 +1,220 @@
+<extend name="Public/base" />
+<block name="mycss">
+	<link rel="stylesheet" href="__PUBLIC__/datetimer/bootstrap-datetimepicker.css">
+</block>
+<block name="content">
+  <div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE FORMPORTLET-->
+        <div class="widget blue">
+            <div class="widget-title">
+                <h4>
+                    <i class="icon-reorder"></i> 编辑订单
+                </h4>
+                <span class="tools">
+                <a href="javascript:;" class="icon-chevron-down"></a>
+                </span>
+            </div>
+            <div class="widget-body">
+                <!-- BEGIN FORM-->
+                <form class="form-vertical" method="post" action="{:U('order/edit')}">
+                    <input type="hidden" name="id" value="{$info.id}">
+                    <div class="row-fluid">
+                    	<div class="span2">
+                    		<div class="control-group">
+                                <label class="control-label">订单来源</label>
+                                <div class="controls controls-row">
+                                     <select class="input-block-level" tabindex="1" name="sid">
+                                     	<option value="0" <if condition="$info.sid eq 0" >selected="selected"</if>>请选择</option>
+                                     	<foreach name="slists" item="vo">
+                                        <option value="{$vo.id}" <?php if($vo['id'] == $info['sid']){ echo 'selected="selected"';}?>>{$vo.sname}</option>		                           
+		                                </foreach>
+		                            </select>
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span5">
+                    		<div class="control-group">
+                                <label class="control-label">订单编号</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入订单编号" name="oid" value="{$info.oid}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span5">
+                    		<div class="control-group">
+                                <label class="control-label">会员号</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入会员号" name="mid" value="{$info.mid}">
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="row-fluid">
+                    	<div class="span3">
+                    		<div class="control-group">
+                                <label class="control-label">买花人姓名</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入买花人姓名" name="buyer" value="{$info.buyer}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span3">
+                    		<div class="control-group">
+                                <label class="control-label">买花人联系电话</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入买花人联系电话" name="bnumber" value="{$info.bnumber}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span3">
+                    		<div class="control-group">
+                                <label class="control-label">收货人姓名</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入收货人姓名" name="receiver" value="{$info.receiver}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span3">
+                    		<div class="control-group">
+                                <label class="control-label">收货人联系电话</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入收货人联系电话" name="rnumber" value="{$info.rnumber}">
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="row-fluid">
+                    	<div class="span9">
+                    		<div class="control-group">
+                                <label class="control-label">收货人地址</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入收货人地址" name="raddress" value="{$info.raddress}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span3">
+                    		<div class="control-group">
+                                <label class="control-label">送花日期</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level"  name="stime" id="datetimepicker" value="{$info.stime|date="Y-m-d H:i",###}">
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="row-fluid">
+                    	<div class="span9">
+                    		<div class="control-group">
+                                <label class="control-label">产品列表</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入产品列表" name="producelist" value="{$info.producelist}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span2">
+                    		<div class="control-group">
+                                    <label class="control-label">订单状态</label>
+                                    <div class="controls">
+                                    	<select class="input-block-level" tabindex="1" name="status">
+                                    		<option value="0" <if condition="$info.status eq 0" >selected="selected"</if>>请选择</option>
+		                                	<option value="4" <if condition="$info.status eq 4" >selected="selected"</if>>完成</option>
+		                                	<option value="3" <if condition="$info.status eq 3" >selected="selected"</if>>预定</option>
+		                                	<option value="2" <if condition="$info.status eq 2" >selected="selected"</if>>故障</option>
+		                                	<option value="1" <if condition="$info.status eq 1" >selected="selected"</if>>作废</option>		                           
+		                            	</select>
+                                    </div>
+                                </div>
+                    	</div>
+                    </div>
+                    <div class="row-fluid">
+                    	<div class="span2">
+                    		<div class="control-group">
+                                <label class="control-label">订单总价</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入订单总价，如99.99" name="osprice" value="{$info.osprice}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span1">
+                    		<div class="control-group">
+                                <label class="control-label">成本</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="如99.99" name="oscost" value="{$info.oscost}">
+                                </div>
+                            </div>
+                    	</div>
+                        <div class="span1">
+                            <div class="control-group">
+                                <label class="control-label">运费</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="如99.99" name="freight" value="{$info.freight}">
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="span2">
+                    		<div class="control-group">
+                                <label class="control-label">花店QQ</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入花店QQ" name="flowerqq" value="{$info.flowerqq}">
+                                </div>
+                            </div>
+                    	</div>
+                    	<div class="span2">
+                    		<div class="control-group">
+                                <label class="control-label">花店名称</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入花店名称" name="fshopname" value="{$info.fshopname}">
+                                </div>
+                            </div>
+                    	</div>
+                        <div class="span2">
+                            <div class="control-group">
+                                <label class="control-label">花店电话</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入花店电话" name="flowerphone" value="{$info.flowerphone}">
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="span2">
+                    		<div class="control-group">
+                                <label class="control-label">花集订单</label>
+                                <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="请输入花集订单" name="flowerorder" value="{$info.flowerorder}">
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="row-fluid" >
+                    	<div class="span12">
+                    		<div class="control-group">
+                                <label class="control-label">备注</label>
+                                <div class="controls controls-row">                                    
+                                    <textarea class="input-block-level" rows="10" name="remarks">{$info.remarks}</textarea>
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="form-actions">
+                        <center><button type="submit" class="btn blue"><i class="icon-ok"></i> 修改</button></center>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>
+</block>
+<block name="myscript">
+	<script type="text/javascript" src="__PUBLIC__/datetimer/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/datetimer/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript">
+		$('#datetimepicker').datetimepicker({
+			startDate:new Date(),
+			language: 'zh-CN',
+            autoclose: true,
+            todayHighlight: true,
+		    format: 'yyyy-mm-dd hh:ii',
+		});
+	</script>
+</block>

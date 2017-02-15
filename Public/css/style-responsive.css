@@ -1,0 +1,148 @@
+
+ @media (min-width: 980px) {
+
+ 	/* sidebar */
+	#sidebar {
+		position: absolute;
+ 		width: 180px;
+  	}
+
+  	#sidebar ul{
+  		margin-top:1px !important;
+  		width: 100%;
+  	}
+
+  	/* body container */
+  	#main-content {
+		margin-top: 0px !important;
+	}
+
+	.fixed-top #main-content {
+		margin-top: 20px;
+	}
+}
+
+
+/* phones and tablets */
+@media (max-width:979px) {
+
+    /*---lock page----*/
+
+    .lock .lock-wrap {
+        width: 95%;
+    }
+    .lock-wrap .single-size, .lock-wrap .double-size {
+        width: 32% !important;
+    }
+
+    .double-size i {
+        /*display: block;*/
+    }
+    /*--------*/
+	/* header bar */
+	#header .navbar-inner li.dropdown i {
+		display: inline-block;
+		position: relative;
+		top:1px;
+		right:-2px;
+	}
+
+	#header.navbar {
+		margin-bottom: 0px !important;
+	}
+
+	#header .navbar-search {
+	  margin-left: 80px !important;
+	}
+
+	/* page title*/
+	.page-title {
+		margin: 4px 0px 7px 0px !important;
+        clear: both;
+	}
+
+	/* body */
+	.fixed-top #main-content {
+		margin-top: 0px;
+	} 
+
+	/* container */
+	#container {
+		margin-top: 0px !important;
+	}
+
+	.fixed-top #container {
+		margin-top: 0px !important;
+	}
+    /*sidebar*/
+	#sidebar .sidebar-toggler {
+		display: none;
+	}
+
+	#sidebar.in {
+		margin-top: 9px !important;
+
+	}
+
+	#sidebar ul {
+		margin-top:0px !important;
+		width:100%;
+	}
+
+	.top-nav .text {
+		display: none;
+	}
+
+	/* sidebar menu */
+	#sidebar .triangle {
+		display: none;
+	}
+
+	#sidebar {		
+		 -webkit-border-radius: 4px !important;
+    		-moz-border-radius: 4px !important;
+         		 border-radius: 4px !important;
+	}
+
+	#sidebar > ul > li:first-child > a{
+		border-top:0px !important;
+	}		
+	#sidebar > ul > li:last-child > a {
+		border-bottom:0px !important;
+	}
+
+	#sidebar > ul > li:first-child > a:hover, #sidebar > ul > li.active:first-child > a{
+		 -webkit-border-radius: 4px 4px 0 0 !important;
+    		-moz-border-radius: 4px 4px 0 0 !important;
+         		 border-radius: 4px 4px 0 0 !important;
+         border-top:0px !important;		 
+	}		
+	#sidebar > ul > li:last-child > a:hover, #sidebar > ul > li.active:last-child > a {
+		 -webkit-border-radius: 0 0 4px 4px !important;
+    		-moz-border-radius: 0 0 4px 4px !important;
+         		 border-radius: 0 0 4px 4px !important;
+         border-bottom:0px !important;		 
+	}
+
+    #sidebar > ul > li > a > span {
+        line-height: 35px;
+    }
+
+    #sidebar > ul > li {
+        margin: 0 0 1px;
+    }
+    #sidebar > ul > li > a {
+        height:35px;
+        line-height:35px;
+        padding: 0 10px;
+        text-align: left;
+    }
+    #sidebar > ul > li > a i{
+        display: none !important;
+    }
+
+    #sidebar ul > li > a .arrow, #sidebar > ul > li > a .arrow.open {
+        margin-right: 25px;
+    }
+    #sidebar > ul > li > a, #sidebar > ul > li > ul.sub > li {
+        widt

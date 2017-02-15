@@ -1,0 +1,50 @@
+<extend name="Public/base" />
+<block name="content">
+	<div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN BASIC PORTLET-->
+            <div class="widget blue">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i> 结算服务</h4>
+                <span class="tools">
+                    <a href="javascript:;" class="icon-chevron-down"></a>                   
+                </span>
+                </div>
+                <div class="widget-body">
+                    <form class="form-vertical" method="post" action="{:U('money/accountjs')}">
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <h3>正在给[{$ocutInfo.tname}]结算</h3>
+                                <p class="lead">
+                                    未结算结算金额:<?php echo $ocutInfo['ocut']+$ocutInfo['mmoney'];?>
+                                </p>
+                                <p>
+                                    未结算结算金额 = 订单支付的金额+上次结算的余额
+                                </p>
+                                <p>
+                                    <?php echo $ocutInfo['ocut']+$ocutInfo['mmoney'];?> = {$ocutInfo.ocut}+{$ocutInfo.mmoney}
+                                </p>
+                            </div>
+                            <div class="span4">
+                                <input type="hidden" name="uname" value="{$ocutInfo.uname}"/>
+                                <input type="hidden" name="author" value="{$ocutInfo.author}"/>
+                                <input type="hidden" name="ocut" value="{$ocutInfo.ocut}"/>
+                                <input type="hidden" name="mmoney" value="{$ocutInfo.mmoney}"/>
+                                <div class="control-group">
+                                    <label class="control-label">结算金额</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="请输入本次结算金额,如:99.99" name="pay">
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <center><button type="submit" class="btn blue"><i class="icon-ok"></i> 提交</button></center>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END BASIC PORTLET-->
+        </div>
+    </div>
+</block>

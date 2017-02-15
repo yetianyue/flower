@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
+
+    <title>登录_同城鲜花速递</title>
+
+    <link href="__PUBLIC__/login/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/login/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="__PUBLIC__/login/animate.css" rel="stylesheet">
+    <link href="__PUBLIC__/login/style.css?v=2.2.0" rel="stylesheet"> 
+    <style type="text/css">
+        .block {
+          text-align: center;
+        }
+        .block:before {
+          content: '';
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          margin-right: -0.25em; 
+        }
+        .centered {
+          display: inline-block;
+          vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body class="gray-bg block">
+    <div class="middle-box text-center loginscreen  animated fadeInDown centered">
+        <div>
+            <div>
+                <img class="logo-name" src="__PUBLIC__/img/flower.jpg"/>
+            </div>
+            <h3>欢迎使用 同城鲜花速递</h3>
+            <p>创建一个同城鲜花速递新账户</p>
+            <form class="m-t" role="form" action="{:U('login/register')}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入用户名" name="unameregister" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入真实姓名" name="tnameregister" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="请输入密码" name="passwdregister" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="请再次输入密码" name="repasswdregister" required>
+                </div>
+                <button  class="btn btn-primary block full-width m-b" type="submit">登 录</button>
+                <p class="text-muted text-center" style="color: #FFF;">
+                    <small>已经有账户了？</small> 
+                    <a href="__ROOT__/login.html">点此登录</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="__PUBLIC__/login/jquery-2.1.1.min.js"></script>
+    <script src="__PUBLIC__/login/bootstrap.min.js?v=3.4.0"></script>
+</body>
+
+</html>

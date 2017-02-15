@@ -1,0 +1,35 @@
+<extend name="Public/base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE FORMPORTLET-->
+        <div class="widget blue">
+            <div class="widget-title">
+                <h4><i class="icon-reorder"></i> 编辑交接单</h4>
+                <span class="tools">
+                <a href="javascript:;" class="icon-chevron-down"></a>
+                </span>
+            </div>
+            <div class="widget-body">
+                <!-- BEGIN FORM-->
+                <div class="row-fluid">
+                    <form action="{:U('jorder/edit')}" class="form-horizontal" method="post">
+                        <div class="control-group">
+                            <input type="hidden" name="id" value="{$info.id}"/>
+                            <label class="control-label">交接单</label>
+                            <div class="controls">
+                                <textarea class="input-xxlarge" rows="6" name="msg">{$info.msg}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn blue"><i class="icon-ok"></i> 编辑</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+  </div>
+</block>

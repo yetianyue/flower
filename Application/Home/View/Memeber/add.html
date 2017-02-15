@@ -1,0 +1,65 @@
+<extend name="Public/base" />
+<block name="content">
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE FORMPORTLET-->
+        <div class="widget blue">
+            <div class="widget-title">
+                <h4><i class="icon-reorder"></i> 添加用户</h4>
+                <span class="tools">
+                <a href="javascript:;" class="icon-chevron-down"></a>
+                </span>
+            </div>
+            <div class="widget-body">
+                <!-- BEGIN FORM-->
+                <form action="{:U('memeber/add')}" class="form-horizontal" method="post">
+                    <div class="control-group">
+                        <label class="control-label">用户名</label>
+                        <div class="controls">
+                            <input type="text" placeholder="请输入用户名" class="input-xxlarge" name="uname">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">真实姓名</label>
+                        <div class="controls">
+                            <input type="text" placeholder="请输入真实姓名" class="input-xxlarge" name="tname">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">密码</label>
+                        <div class="controls">
+                            <input type="password" placeholder="请输入密码" class="input-xxlarge" name="passwd">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">确认密码</label>
+                        <div class="controls">
+                            <input type="password" placeholder="请输入确认密码" class="input-xxlarge" name="repasswd">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">提出比例</label>
+                        <div class="controls">
+                            <input type="number" placeholder="请输入订单提成百分点" class="input-xxlarge" name="proportion" value="0" min="0" max="100">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">权限</label>
+                        <div class="controls">
+                            <select class="input-large m-wrap" tabindex="1" name="roleid">
+                                <option value="1">超级管理员</option>
+                                <option value="2" selected="selected">业务员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue"><i class="icon-ok"></i> 添加</button>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+  </div>
+</block>

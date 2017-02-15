@@ -1,0 +1,303 @@
+<extend name="Public/base" />
+<block name="mycss">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/assets/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="__PUBLIC__/datetimer/bootstrap-datetimepicker.css">
+    <style type="text/css">
+        .tablecenter tr td,.tablecenter tr th{
+           text-align: center;
+           vertical-align:middle;
+        }
+    </style>
+</block>
+<block name="content">
+    <if condition="$userinfo.roleid eq 1">
+    <div class="row-fluid">
+        <div class="span3">
+            <h3>当日收入：<font class="text-info">{$coinfo.0.price}</font>元</h3>
+        </div>
+        <div class="span3">
+            <h3>当月收入：<font class="text-info">{$coinfo.1.price}</font>元</h3>
+        </div>
+        <div class="span2">
+            <div class="control-group">
+                <label class="control-label">利润日查询</label>
+                <div class="controls controls-row">
+                    <input type="text" class="input-block-level" name="stime" id="daytimesearch">
+                </div>
+            </div>
+        </div>
+        <div class="span4">
+            <h3 id="daysearchresult">请选择日期查询</h3>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <h3>当日利润：<font class="text-success">{$coinfo.2.price}</font>元</h3>
+        </div>
+        <div class="span3">
+            <h3>当月利润：<font class="text-success">{$coinfo.3.price}</font>元</h3>
+        </div>
+        <div class="span2">
+            <div class="control-group">
+                <label class="control-label">利润月查询</label>
+                <div class="controls controls-row">
+                    <input type="text" class="input-block-level" name="stime" id="monthtimesearch">
+                </div>
+            </div>
+        </div>
+        <div class="span4">
+            <h3 id="monthsearchresult">请选择日期查询</h3>
+        </div>
+    </div>
+    </if>
+  	<div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN BASIC PORTLET-->
+            <div class="widget blue">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i> 流水列表</h4>
+                <span class="tools">
+                    <a href="{:U('order/add')}">添加订单</a>
+                    <a href="javascript:;" class="icon-chevron-down"></a>                   
+                </span>
+                </div>
+                <div class="widget-body">
+                    <if condition="$userinfo.roleid eq 1">
+                    <form action="{:U('money/lists')}" class="form-vertical" method="get">
+                        <div class="row-fluid">
+                           <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">下单日期</label>
+                                    <div class="controls controls-row">
+                                    <input type="text" class="input-block-level" placeholder="依据日期区间搜索" id="dateCtime" name="ctime" value="<?php if(!empty($getParam['ctime'])){ echo $getParam['ctime'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">送花日期</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据日期区间搜索" id="dateStime" name="stime" value="<?php if(!empty($getParam['stime'])){ echo $getParam['stime'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">订单编号</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据订单编号搜索" name="oid" value="<?php if(!empty($getParam['oid'])){ echo $getParam['oid'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">花集订单</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据花集订单搜索" name="flowerorder" value="<?php if(!empty($getParam['flowerorder'])){ echo $getParam['flowerorder'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">会员号</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据会员号搜索" name="mid" value="<?php if(!empty($getParam['mid'])){ echo $getParam['mid'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">花店名称</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据花店名称搜索" name="fshopname" value="<?php if(!empty($getParam['fshopname'])){ echo $getParam['fshopname'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">订单来源</label>
+                                    <div class="controls controls-row">
+                                        <select class="input-block-level" tabindex="1" name="sid">
+                                            <option value="0" <?php if($getParam['sid'] == 0){ echo 'selected="selected"';}?> >请选择</option>
+                                            <foreach name="slists" item="vo">
+                                            <option value="{$vo.id}" <?php if($getParam['sid'] == $vo['id']){ echo 'selected="selected"';}?>>{$vo.sname}</option>                                  
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">业务员</label>
+                                    <div class="controls controls-row">
+                                        <select class="input-block-level" tabindex="1" name="author">
+                                            <option value="0" <?php if($getParam['author'] == 0){ echo 'selected="selected"';}?>>请选择</option>
+                                            <foreach name="mlists" item="vo">
+                                            <option value="{$vo.id}" <?php if($getParam['author'] == $vo['id']){ echo 'selected="selected"';}?> >{$vo.tname}</option>                                  
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">状态</label>
+                                    <div class="controls controls-row">
+                                        <select class="input-block-level" tabindex="1" name="status">
+                                            <option value="0" <?php if($getParam['status'] == 0){ echo 'selected="selected"';}?> >请选择</option>
+                                            <option value="2" <?php if($getParam['status'] == 2){ echo 'selected="selected"';}?> >故障</option>
+                                            <option value="3" <?php if($getParam['status'] == 3){ echo 'selected="selected"';}?> >预约</option>
+                                            <option value="4" <?php if($getParam['status'] == 4){ echo 'selected="selected"';}?> >完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">姓名</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据买/收姓名搜索" name="name" value="<?php if(!empty($getParam['name'])){ echo $getParam['name'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">联系电话</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据买/收联系电话搜索" name="phone" value="<?php if(!empty($getParam['phone'])){ echo $getParam['phone'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="control-group">
+                                    <label class="control-label">地址</label>
+                                    <div class="controls controls-row">
+                                        <input type="text" class="input-block-level" placeholder="依据收货地址搜索" name="raddress" value="<?php if(!empty($getParam['raddress'])){ echo $getParam['raddress'];}?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <center><button type="submit" class="btn blue"><i class="icon-ok"></i> 搜索</button></center>
+                        </div>
+                    </form>
+                    </if>
+                    <table class="table table-bordered tablecenter">
+                        <thead>
+                        <tr >
+                            <th rowspan="2"> 订单编号</th>
+                            <th rowspan="2"> 订单来源</th>
+                            <th rowspan="2"> 会员号</th>
+                            <th rowspan="2"> 姓名/电话</th>
+                            <th rowspan="2"> 地址</th>
+                            <th colspan="5"> 流水</th>
+                            <th rowspan="2"> 送花日期</th>
+                            <th rowspan="2"> 下单时间</th>  
+                            <th rowspan="2"> 花店名称</th>
+                            <th rowspan="2"> 业务员</th>
+                            <th rowspan="2"> 订单状态</th>
+                            <th rowspan="2"> 结算状态</th>
+                        </tr>
+                        <tr>
+                            <th > 收入</th>
+                            <th > 订单价</th>
+                            <th > 成本价</th>
+                            <th > 利润</th>
+                            <th > 比例</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <foreach name="list" item="vo">
+                        <tr>
+                            <td><a href="<?php echo U('order/edit',array('id'=>$vo['id']));?>">{$vo.oid}</a></td>
+                            <td>{$vo.sname}</td>
+                            <td>{$vo.mid}</td>
+                            <td>{$vo.receiver}/{$vo.rnumber}</td>
+                            <td>{$vo.raddress}</td>
+                            <td>{$vo.ocut}</td>
+                            <td>{$vo.osprice}</td>
+                            <td>{$vo.oscost}</td>
+                            <td>{$vo.oprofit}</td>
+                            <td>{$vo.ocutpresent}%</td>
+                            <td>{$vo.stime|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.ctime|date="Y-m-d H:i:s",###}</td>
+                            <td><a href="http://sighttp.qq.com/msgrd?v=1&uin={$vo.flowerqq}" target="blank">{$vo.fshopname}</a></td>
+                            <td>{$vo.tname}</td>
+                            <td>
+                            	<switch name="vo.status" >
+                            		<case value="2" break="2"><button class="btn btn-small btn-warning" title="故障">故障</button></case>
+									<case value="3" break="3"><button class="btn btn-small btn-success" title="预定">预定</button></case>
+									<case value="4" break="4"><button class="btn btn-small btn-danger" title="完成">完成</button></case>
+									<default />未知状态
+								</switch>
+							</td>
+                            <td>
+                                <if condition="$vo.isbalance eq 1">已结<else/>未结</if>
+                            </td>
+                        </tr>
+                        </foreach>
+                        </tbody>
+                    </table>
+                    <center>{$page}</center>
+                </div>
+            </div>
+            <!-- END BASIC PORTLET-->
+        </div>
+    </div>
+</block>
+<block name="myscript">
+    <script type="text/javascript" src="__PUBLIC__/assets/bootstrap-daterangepicker/date.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/datetimer/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/datetimer/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript">
+        $('#dateCtime').daterangepicker({
+            'format':'yyyy/MM/dd'
+        });
+        $('#dateStime').daterangepicker({
+            'format':'yyyy/MM/dd'
+        });
+        $('#daytimesearch').datetimepicker({
+            minView:2,
+            maxView:4,
+            language: 'zh-CN',
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd',
+        });
+        $('#monthtimesearch').datetimepicker({
+            startView:3,
+            minView:3,
+            language: 'zh-CN',
+            autoclose: true,
+            todayHighlight: true,
+            format: 'yyyy-mm',
+        });
+        $('#daytimesearch').change(function(event) {
+            getMoney(this,'day','#daysearchresult');
+        });
+        $('#monthtimesearch').change(function(event) {
+            getMoney(this,'month','#monthsearchresult');
+        });
+        function getMoney(obj,type,id){
+            var data  = {
+                date:$(obj).val(),
+                type:type
+            }
+            $.ajax({
+                url: '{:U("money/getMoneyData")}',
+                type: 'POST',
+                dataType: 'json',
+                data:data,
+                success:function(d){
+                    if(d.status==1){
+                        var html = "查询结果：收入：<font class='text-info'>"+d.data.income+"</font>元;&nbsp;&nbsp;利润：<font class='text-info'>"+d.data.profit+"</font>元";
+                        $(id).html(html);
+                    }
+                }
+            });
+        }
+    </script>
+</block>
